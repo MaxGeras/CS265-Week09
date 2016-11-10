@@ -48,17 +48,15 @@ public class MainActivity extends AppCompatActivity implements android.view.View
 
         // Check if number is 0 or not.....
         if (preferenceSettings.getInt("number", number) != 0) {
-            text.setText("" + preferenceSettings.getInt("number", number));
+            number = preferenceSettings.getInt("number", number);
         } else {
-            text.setText("" + preferenceSettings.getInt("number", number));
+            number = preferenceSettings.getInt("number", number);
         }
+        text.setText("" + number);
     }
 
     // Advance the count by 1
-    private void advanceNumber(){
-        // advance
-        number++;
-
+    private void advanceNumber(int number){
         // Display the message
         Toast.makeText(this, "Advance adds 1 to the count", Toast.LENGTH_SHORT).show();
 
@@ -97,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements android.view.View
 
         // Advance button
         if(view == advance){
-           advanceNumber();
+            number++;
+           advanceNumber(number);
         }
 
         // Save button
